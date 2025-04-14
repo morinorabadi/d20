@@ -53,7 +53,7 @@ export default class Editor {
         "main_camera",
         0.6,
         1.4,
-        3,
+        10,
         new Vector3(0, 1, 0)
       );
       this.camera.attachControl();
