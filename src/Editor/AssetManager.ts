@@ -18,7 +18,7 @@ export default class AssetManager extends AM {
 
 	constructor(scene: Scene) {
 		super(scene);
-		["basic_ground"].forEach((name) => {
+		["d20"].forEach((name) => {
 			const url = `${window.location.origin}/gltfs/${name}.glb`;
 			this.addContainerTask(name, "", "", url);
 		});

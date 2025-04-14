@@ -11,6 +11,7 @@ import AssetManager from "./AssetManager";
 import Debugger from "./Debugger";
 import HavokPhysics from "@babylonjs/havok";
 import Ground from "./Ground";
+import D20 from "./D20";
 
 export default class Editor {
   private static instance: Editor | undefined;
@@ -76,7 +77,10 @@ export default class Editor {
       await this.assetManager.loadAsync();
 
       new Ground();
-
+      const d20 = new D20()
+      setTimeout(() => {
+        d20.dispose()
+      }, 20000)
       await this.scene.whenReadyAsync();
 
       this.environment = new Environment();
