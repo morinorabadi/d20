@@ -20,7 +20,7 @@ const base: IState = {
   score: 0,
   totalScore: 0,
   remainingChance: 3,
-  message: "",
+  message: "welcome",
 };
 
 const createScoreSlice: StateCreator<IScoreSlice> = (set, get) => ({
