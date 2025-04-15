@@ -11,13 +11,17 @@ export default function UI() {
   const onRestart = () => Editor.GetInstance().diceManager.restart();
 
   return (
-    <div className="fixed top-4 left-2 w-40">
+    <div className="fixed top-4 left-2 w-40 bg-white p-2 rounded-2xl shadow">
       <p>{message}</p>
       <p> Score = {score} </p>
       <p> total Score = {totalScore} </p>
       <p> remaining roll = {remainingChance} </p>
-      <button onClick={onRoll}>Roll</button>
-      <button onClick={onRestart}>Restart</button>
+      <button className="btn" onClick={onRoll}>
+        Roll
+      </button>
+      <button className="btn" onClick={onRestart}>
+        Restart
+      </button>
     </div>
   );
 }
