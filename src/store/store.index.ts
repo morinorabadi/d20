@@ -1,6 +1,7 @@
 import { create, type StoreApi, type UseBoundStore } from "zustand";
 import createLoadingSlice, { ILoadingSlice } from "./loading.slice";
 import createResetSlice, { IResetSlice } from "./reset.slice";
+import createScoreSlice, { IScoreSlice } from "./score.slice";
 
 // !: Don't touch this part
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -20,9 +21,10 @@ function createSelectors<S extends UseBoundStore<StoreApi<object>>>(_store: S) {
 }
 
 // * update store from here
-const useStoreBase = create<ILoadingSlice & IResetSlice>()((...args) => ({
+const useStoreBase = create<ILoadingSlice & IResetSlice & IScoreSlice>()((...args) => ({
 	...createLoadingSlice(...args),
 	...createResetSlice(...args),
+	...createScoreSlice(...args),
 }));
 
 const useStore = createSelectors(useStoreBase);
