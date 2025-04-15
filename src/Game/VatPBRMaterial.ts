@@ -1,9 +1,9 @@
 import { PBRCustomMaterial } from "@babylonjs/materials/custom/pbrCustomMaterial";
-import Editor from "./Editor";
+import Game from "./Game";
 
 export default class VatPBRMaterial extends PBRCustomMaterial{
     constructor(name : string){
-        const { scene } = Editor.GetInstance()
+        const { scene } = Game.GetInstance()
 
         super(name)
 

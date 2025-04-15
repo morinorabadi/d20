@@ -7,7 +7,7 @@ import {
 	Scene,
 	Vector3,
 } from "@babylonjs/core";
-import Editor from "./Editor";
+import Game from "./Game";
 
 type ILights = {
 	environmentIntensity: number;
@@ -45,7 +45,7 @@ export default class Environment {
 	// shadowGenerator!: ShadowGenerator;
 
 	constructor() {
-		const scene = Editor.GetInstance().scene;
+		const scene = Game.GetInstance().scene;
 
 		const configuration = configurations.base;
 

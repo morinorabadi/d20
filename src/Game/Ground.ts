@@ -6,7 +6,7 @@ import {
   Quaternion,
   Vector3,
 } from "@babylonjs/core";
-import Editor from "./Editor";
+import Game from "./Game";
 
 export default class Ground {
   constructor() {
@@ -35,7 +35,7 @@ export default class Ground {
   }
 
   createBox(size: Vector3, pos: Vector3) {
-    const { scene } = Editor.GetInstance();
+    const { scene } = Game.GetInstance();
 
     const base = CreateBox("base");
     base.scaling.copyFrom(size);

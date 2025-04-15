@@ -14,12 +14,12 @@ import HavokPhysics from "@babylonjs/havok";
 import Ground from "./Ground";
 import DiceManager from "./DiceManager";
 
-export default class Editor {
-  private static instance: Editor | undefined;
+export default class Game {
+  private static instance: Game | undefined;
 
   static GetInstance() {
     if (!this.instance) {
-      this.instance = new Editor();
+      this.instance = new Game();
     }
     return this.instance;
   }

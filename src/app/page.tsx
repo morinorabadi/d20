@@ -1,5 +1,5 @@
-import EditorUi from "@/components/AddEditor";
+import Canvas from "@/components/Canvas";
 
 export default function Home() {
-  return <EditorUi />
+  return <Canvas />
 }

@@ -5,7 +5,7 @@ import {
   PhysicsShapeConvexHull,
   Vector3,
 } from "@babylonjs/core";
-import Editor from "./Editor";
+import Game from "./Game";
 import normal from "./d20.json";
 
 export default class D20 {
@@ -13,7 +13,7 @@ export default class D20 {
   private positions: { position: Vector3; number: number }[] = [];
 
   constructor(private onFinish: (score: number) => void) {
-    const { assetManager, scene } = Editor.GetInstance();
+    const { assetManager, scene } = Game.GetInstance();
     this.mesh = assetManager.getMesh("d20").getChildren().at(0) as Mesh;
     this.mesh.position.y = 10;
 

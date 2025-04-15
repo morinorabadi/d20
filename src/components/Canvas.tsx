@@ -1,28 +1,28 @@
 "use client";
 import { useRef, useLayoutEffect } from "react";
-import Editor from "@/Editor/Editor";
+import Game from "@/Game/Game";
 import useStore from "@/store/store.index";
 import Loading from "@/shared/Loading";
 import GameUI from "./GameUI";
 
-export default function EditorUi() {
+export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isLoadingOver = useStore.use.isLoadingOver();
 
   useLayoutEffect(() => {
     async function startGame() {
       if (!canvasRef.current) return;
-      const editor = Editor.GetInstance();
+      const editor = Game.GetInstance();
       try {
         await editor.init(canvasRef.current);
       } catch (error) {
-        Editor.ClearInstance();
+        Game.ClearInstance();
         console.error(error);
       }
     }
     void startGame();
 
-    return () => Editor.ClearInstance();
+    return () => Game.ClearInstance();
   }, []);
 
   return (
