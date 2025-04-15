@@ -12,24 +12,24 @@ export default class Ground {
   constructor() {
     [
       {
-        size: new Vector3(20, 2, 20),
+        size: new Vector3(10, 2, 10),
         pos: new Vector3(0, -1, 0),
       },
       {
-        size: new Vector3(2, 2, 23),
-        pos: new Vector3(10.5, 1, 0),
+        size: new Vector3(1, 5, 10),
+        pos: new Vector3(5.25, 1, 0),
       },
       {
-        size: new Vector3(2, 2, 23),
-        pos: new Vector3(-10.5, 1, 0),
+        size: new Vector3(1, 5, 10),
+        pos: new Vector3(-5.25, 1, 0),
       },
       {
-        size: new Vector3(23, 2, 2),
-        pos: new Vector3(0, 1, 10.5),
+        size: new Vector3(10, 5, 1),
+        pos: new Vector3(0, 1, 5.25),
       },
       {
-        size: new Vector3(23, 2, 2),
-        pos: new Vector3(0, 1, -10.5),
+        size: new Vector3(10, 5, 1),
+        pos: new Vector3(0, 1, -5.25),
       },
     ].forEach((info) => this.createBox(info.size, info.pos));
   }

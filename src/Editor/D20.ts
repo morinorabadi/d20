@@ -12,8 +12,7 @@ export default class D20 {
   private mesh: Mesh;
   private positions: { position: Vector3; number: number }[] = [];
 
-  
-  constructor(private onFinish : (score: number) => void) {
+  constructor(private onFinish: (score: number) => void) {
     const { assetManager, scene } = Editor.GetInstance();
     this.mesh = assetManager.getMesh("d20").getChildren().at(0) as Mesh;
     this.mesh.position.y = 10;
@@ -25,14 +24,15 @@ export default class D20 {
       scene
     );
     physicsBody.shape = new PhysicsShapeConvexHull(this.mesh, scene);
+    physicsBody.shape.material = { friction : 0.2,restitution : 0.4 }
 
     physicsBody.applyImpulse(
-      new Vector3(
-        this.randomPower(),
-        0,
-        this.randomPower()
-      ),
+      new Vector3(this.randomPower(), 0, this.randomPower()),
       this.mesh.getAbsolutePosition()
+    );
+
+    physicsBody.applyAngularImpulse(
+      new Vector3(this.randomPower(), 0, this.randomPower())
     );
 
     scene.onAfterPhysicsObservable.add(this.calculateDisplacement.bind(this));
@@ -44,8 +44,8 @@ export default class D20 {
       };
     });
   }
-  private randomPower(){
-    return Math.random() + 0.5 * (Math.random() > 0.5 ? 1 : -1) * 2000
+  private randomPower() {
+    return Math.random() + 0.5 * (Math.random() > 0.5 ? 1 : -1) * 2000;
   }
 
   dispose() {
@@ -85,6 +85,6 @@ export default class D20 {
       }
     });
 
-    this.onFinish(topFace)
+    this.onFinish(topFace);
   }
 }

@@ -11,7 +11,6 @@ import AssetManager from "./AssetManager";
 import Debugger from "./Debugger";
 import HavokPhysics from "@babylonjs/havok";
 import Ground from "./Ground";
-import D20 from "./D20";
 import DiceManager from "./DiceManager";
 
 export default class Editor {
@@ -56,7 +55,7 @@ export default class Editor {
       this.camera = new ArcRotateCamera(
         "main_camera",
         0.6,
-        1.4,
+        1,
         10,
         new Vector3(0, 1, 0)
       );
