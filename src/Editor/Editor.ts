@@ -5,6 +5,7 @@ import {
   Scene,
   Vector3,
   HavokPlugin,
+  Observable,
 } from "@babylonjs/core";
 import Environment from "./Environment";
 import AssetManager from "./AssetManager";
@@ -40,6 +41,8 @@ export default class Editor {
 
   camera!: ArcRotateCamera;
 
+  resizeObservable = new Observable();
+
   isInitialized = false;
   async init(canvas: HTMLCanvasElement) {
     try {
@@ -49,6 +52,12 @@ export default class Editor {
       this.canvas = canvas;
       this.engine = new Engine(canvas, true);
       this.scene = new Scene(this.engine);
+
+      this.onResize = () => {
+        this.engine.resize();
+        this.resizeObservable.notifyObservers(undefined);
+      };
+      window.addEventListener("resize", this.onResize);
 
       await this.initHavok();
 
@@ -103,9 +112,11 @@ export default class Editor {
     const physicsPlugin = new HavokPlugin(true, hk);
     this.scene.enablePhysics(gravityVector, physicsPlugin);
   }
+  private onResize() {}
 
   cleanUp() {
     this.engine.stopRenderLoop();
+    window.removeEventListener("resize", this.onResize);
     this.engine.dispose();
   }
 }
