@@ -12,6 +12,7 @@ import Debugger from "./Debugger";
 import HavokPhysics from "@babylonjs/havok";
 import Ground from "./Ground";
 import D20 from "./D20";
+import DiceManager from "./DiceManager";
 
 export default class Editor {
   private static instance: Editor | undefined;
@@ -36,6 +37,8 @@ export default class Editor {
   environment!: Environment;
   assetManager!: AssetManager;
 
+  diceManager!: DiceManager;
+
   camera!: ArcRotateCamera;
 
   isInitialized = false;
@@ -48,8 +51,8 @@ export default class Editor {
       this.engine = new Engine(canvas, true);
       this.scene = new Scene(this.engine);
 
-      await this.initHavok()
-      
+      await this.initHavok();
+
       this.camera = new ArcRotateCamera(
         "main_camera",
         0.6,
@@ -77,10 +80,8 @@ export default class Editor {
       await this.assetManager.loadAsync();
 
       new Ground();
-      const d20 = new D20()
-      setTimeout(() => {
-        d20.dispose()
-      }, 20000)
+      this.diceManager = new DiceManager();
+
       await this.scene.whenReadyAsync();
 
       this.environment = new Environment();
